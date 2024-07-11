@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import MaxWidthWrapper from './MaxWidthWrapper'
 
-type Props = {}
 
-const Register = (props: Props) => {
+
+const Register = () => {
   return (
    <MaxWidthWrapper>
 

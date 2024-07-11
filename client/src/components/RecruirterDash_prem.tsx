@@ -1,5 +1,5 @@
 import moment from 'moment';
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { RootState } from '../redux/store';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
@@ -14,7 +14,6 @@ import {
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-type Props = {};
 
 interface Job {
   id: string;
@@ -43,9 +42,9 @@ interface User {
   username: string;
 }
 
-const RecruirterDash_prem = (props: Props) => {
+const RecruirterDash_prem = () => {
   const currentUser = useSelector((state: RootState) => state.user.currentUser) as User | null;
-  const [isLoading, setIsLoading] = useState(true);
+  const [, setIsLoading] = useState(true);
   const [jobs, setJobs] = useState<Job[]>([]);
   const [totalApplications, setTotalApplications] = useState<number>(0);
   const [pendingApplications, setPendingApplications] = useState<number>(0);

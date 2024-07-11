@@ -36,7 +36,7 @@ interface User {
 const EditProfile: React.FC = () => {
   const [countryId, setCountryId] = useState<string | null>(null);
   const [stateId, setStateId] = useState<string | null>(null);
-  const [cityId, setCityId] = useState<string | null>(null);
+  const [, setCityId] = useState<string | null>(null);
   const [formData, setFormData] = useState<FormData>({
     fullname: '',
     address: '',
@@ -58,7 +58,7 @@ const EditProfile: React.FC = () => {
 
   useEffect(() => {
     // Fetch countries list on component mount
-    GetCountries().then((result) => setCountriesList(result));
+    GetCountries().then((result: React.SetStateAction<any[]>) => setCountriesList(result));
   }, []);
 
   const handleCountryChange = (selectedOption: any) => {
@@ -68,7 +68,7 @@ const EditProfile: React.FC = () => {
     setCityId(null);
     setFormData({ ...formData, address: selectedOption.name });
 
-    GetState(selectedOption.id).then((result) => setStateList(result));
+    GetState(selectedOption.id).then((result: React.SetStateAction<any[]>) => setStateList(result));
   };
 
   const handleStateChange = (selectedOption: any) => {
@@ -77,7 +77,7 @@ const EditProfile: React.FC = () => {
     setCityId(null);
     setFormData({ ...formData, address: `${formData.address}, ${selectedOption.name}` });
 
-    GetCity(countryId!, selectedOption.id).then((result) => setCityList(result));
+    GetCity(countryId!, selectedOption.id).then((result: React.SetStateAction<any[]>) => setCityList(result));
   };
 
   const handleCityChange = (selectedOption: any) => {
@@ -114,7 +114,7 @@ const EditProfile: React.FC = () => {
     } catch (error) {
       console.error('Error updating profile:', error);
       toast.error('Failed to update profile. Please try again later.');
-      dispatch(updateFailure(error.message || 'Failed to update profile.'));
+      dispatch(updateFailure('Failed to update profile.'));
     } finally {
       setLoading(false);
       navigate(`/profile/${currentUser?.username}`)

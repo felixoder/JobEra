@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import { Link, useParams } from 'react-router-dom';
@@ -58,12 +58,17 @@ const Userprofile = () => {
     try {
       const sessionIdRes = await axios.post('/api/buy-premium', { username });
       const sessionId = sessionIdRes.data.sessionId;
-
+  
       const stripe = await stripePromise;
+  
+      if (!stripe) {
+        throw new Error('Failed to load Stripe');
+      }
+  
       const { error } = await stripe.redirectToCheckout({
         sessionId,
       });
-
+  
       if (error) {
         toast.error('Failed to redirect to Checkout');
       }
@@ -71,6 +76,7 @@ const Userprofile = () => {
       toast.error('Failed to initiate Checkout session');
     }
   };
+  
 
   if (isLoading) {
     return (

@@ -1,8 +1,6 @@
-import React from 'react'
 
-type Props = {}
 
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     
 

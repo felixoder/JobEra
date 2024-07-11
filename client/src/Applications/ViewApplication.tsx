@@ -29,7 +29,7 @@ interface User {
 const ViewApplication: React.FC = () => {
   const [applications, setApplications] = useState<Application[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedApplicationId, setSelectedApplicationId] = useState<number | null>(null);
+  const [, setSelectedApplicationId] = useState<number | null>(null);
   const currentUser = useSelector((state: RootState) => state.user.currentUser) as User | null;
 
   const fetchApplications = async () => {
@@ -84,14 +84,7 @@ const ViewApplication: React.FC = () => {
     setSelectedApplicationId(appId);
   };
 
-  const handleCloseFeedbackModal = () => {
-    setSelectedApplicationId(null);
-  };
 
-  const handleFeedbackSubmit = () => {
-    fetchApplications(); // Refresh applications after feedback submission
-    setSelectedApplicationId(null); // Close feedback modal
-  };
 
   if (!applications && !isLoading) {
     return (

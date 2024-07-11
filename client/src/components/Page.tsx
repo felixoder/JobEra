@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { CircleX } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import MaxWidthWrapper from './MaxWidthWrapper';
 
 const Page = () => {

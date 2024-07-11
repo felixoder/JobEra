@@ -18,7 +18,7 @@ interface FormData {
 const RegisterNormal: React.FC = () => {
   const [countryId, setCountryId] = useState<string | null>(null);
   const [stateId, setStateId] = useState<string | null>(null);
-  const [cityId, setCityId] = useState<string | null>(null);
+  const [, setCityId] = useState<string | null>(null);
   const [formData, setFormData] = useState<FormData>({ fullname: '', password: '', email: '', address: '' });
   const navigate = useNavigate();
   const [countriesList, setCountriesList] = useState<any[]>([]);
@@ -28,7 +28,7 @@ const RegisterNormal: React.FC = () => {
   const [loading, setLoading] = useState(false); // Loading state
 
   useEffect(() => {
-    GetCountries().then((result) => setCountriesList(result));
+    GetCountries().then((result: React.SetStateAction<any[]>) => setCountriesList(result));
   }, []);
 
   const handleCountryChange = (selectedOption: any) => {
@@ -37,7 +37,7 @@ const RegisterNormal: React.FC = () => {
     setCityId(null);
     setFormData({ ...formData, address: selectedOption.name });
 
-    GetState(selectedOption.id).then((result) => setStateList(result));
+    GetState(selectedOption.id).then((result: React.SetStateAction<any[]>) => setStateList(result));
   };
 
   const handleStateChange = (selectedOption: any) => {
@@ -45,7 +45,7 @@ const RegisterNormal: React.FC = () => {
     setCityId(null);
     setFormData({ ...formData, address: `${formData.address}, ${selectedOption.name}` });
 
-    GetCity(countryId!, selectedOption.id).then((result) => setCityList(result));
+    GetCity(countryId!, selectedOption.id).then((result: React.SetStateAction<any[]>) => setCityList(result));
   };
 
   const handleCityChange = (selectedOption: any) => {
@@ -88,7 +88,7 @@ const RegisterNormal: React.FC = () => {
     } catch (error) {
       console.error('Error:', error);  // Debugging line to see the error
       toast.error('Sorry, try again later!');
-      dispatch(signInFailure(error.message || error.toString()));
+      dispatch(signInFailure('Failed'));
     } finally {
       setLoading(false); // Set loading state to false
     }

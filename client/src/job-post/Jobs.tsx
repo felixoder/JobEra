@@ -55,7 +55,6 @@ const Jobs = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [job, setJob] = useState<Job | null>(null);
   const [user, setUser] = useState<User | null>(null);
-  const [glassdoorAnswer, setGlassdoorAnswer] = useState<string>("");
 
   const [loading, setLoading] = useState(false);
   const currentUser = useSelector(

@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
 
-type Props = {}
 
 interface FormData {
   is_premium: boolean;
@@ -17,9 +16,9 @@ interface User {
   is_premium: boolean;
 }
 
-const Congratulation = (props: Props) => {
+const Congratulation = () => {
   const currentUser = useSelector((state: RootState) => state.user.currentUser) as User | null;
-  const [formData, setFormData] = useState<FormData>({
+  const [formData] = useState<FormData>({
     is_premium: true, // Set the initial value to true
   });
   const dispatch = useDispatch();
@@ -50,7 +49,7 @@ const Congratulation = (props: Props) => {
     } catch (error) {
       console.error('Error updating profile:', error);
       toast.error('Failed to update profile. Please try again later.');
-      dispatch(updateFailure(error.message || 'Failed to update profile.'));
+      dispatch(updateFailure('Failed to update profile.'));
     } finally {
       setLoading(false);
       navigate(`/profile/${currentUser?.username}`)

@@ -1,5 +1,5 @@
 // FilterBar.tsx
-import React, { useState } from 'react';
+import  { useState } from 'react';
 
 interface Props {
   onFilter: (filters: Record<string, string>) => void;
