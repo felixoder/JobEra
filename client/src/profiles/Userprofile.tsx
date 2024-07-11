@@ -38,7 +38,7 @@ const Userprofile = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/get-user?username=${username}`);
+        const res = await axios.get(`https://jobera.onrender.com/api/get-user?username=${username}`);
         if (res.status === 200) {
           setUser(res.data);
         } else {

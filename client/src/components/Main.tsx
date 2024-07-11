@@ -29,7 +29,7 @@ const Main: React.FC = () => {
 
   const fetchJobs = async () => {
     try {
-      const res = await axios.get('http://localhost:8000/api/get-jobs'); // Adjust URL as per your backend endpoint
+      const res = await axios.get('https://jobera.onrender.com/api/get-jobs'); // Adjust URL as per your backend endpoint
       setJobs(res.data);
     } catch (error) {
       console.error('Error fetching jobs:', error);
@@ -40,7 +40,7 @@ const Main: React.FC = () => {
 
   const handleSearch = async (query: string) => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/get-jobs?title=${query}`); // Adjust URL as per your backend endpoint
+      const res = await axios.get(`https://jobera.onrender.com/api/get-jobs?title=${query}`); // Adjust URL as per your backend endpoint
       setJobs(res.data);
     } catch (error) {
       console.error('Error searching jobs:', error);
@@ -49,7 +49,7 @@ const Main: React.FC = () => {
 
   const handleFilter = async (filters: Record<string, string>) => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/get-jobs`, {
+      const res = await axios.get(`https://jobera.onrender.com/api/get-jobs`, {
         params: filters, // Send filters as query parameters
       });
       setJobs(res.data);

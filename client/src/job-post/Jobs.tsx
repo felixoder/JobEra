@@ -81,7 +81,7 @@ const Jobs = () => {
     const fetchJob = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/api/get-jobs?slug=${slug}`
+          `https://jobera.onrender.com/api/get-jobs?slug=${slug}`
         );
 
         if (res.status === 200) {
@@ -110,7 +110,7 @@ const Jobs = () => {
     const fetchUser = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/api/get-user?username=${job?.author}`
+          `https://jobera.onrender.com/api/get-user?username=${job?.author}`
         );
         if (res.status === 200) {
           setUser(res.data);
@@ -145,7 +145,7 @@ const Jobs = () => {
       // Simulate submission or handle actual submission logic
       // Replace with actual API call using Axios or fetch
       const res = await axios.post(
-        "http://localhost:8000/api/apply-jobs",
+        "https://jobera.onrender.com/api/apply-jobs",
         formData
       );
       if (res.status === 200) {

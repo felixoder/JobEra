@@ -68,7 +68,7 @@ const RegisterNormal: React.FC = () => {
     try {
       dispatch(signInStart());
       setLoading(true); // Set loading state to true
-      const res = await fetch('http://localhost:8000/api/register-normal', {
+      const res = await fetch('https://jobera.onrender.com/api/register-normal', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

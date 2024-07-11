@@ -34,7 +34,7 @@ const ViewApplication: React.FC = () => {
 
   const fetchApplications = async () => {
     try {
-      const res = await axios.get<Application[]>(`http://localhost:8000/api/get-application?author=${currentUser?.username}&status=Pending`);
+      const res = await axios.get<Application[]>(`https://jobera.onrender.com/api/get-application?author=${currentUser?.username}&status=Pending`);
       if (res.status === 200) {
         setApplications(res.data);
       } else {

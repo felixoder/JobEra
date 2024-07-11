@@ -40,7 +40,7 @@ const Login: React.FC = () => {
     try {
         setLoading(true)
       dispatch(signInStart());
-      const res = await fetch('http://localhost:8000/api/sign-in', {
+      const res = await fetch('https://jobera.onrender.com/api/sign-in', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

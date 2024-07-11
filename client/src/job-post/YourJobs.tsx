@@ -36,7 +36,7 @@ const YourJobs = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/get-jobs?username=${currentUser?.username}`);
+        const res = await axios.get(`https://jobera.onrender.com/api/get-jobs?username=${currentUser?.username}`);
         if (res.status === 200) {
           // Sort jobs by created_at in descending order
           const sortedJobs = res.data.sort((a: Job, b: Job) => {
@@ -74,7 +74,7 @@ const YourJobs = () => {
 
   const handleDeleteJob = async (jobId: string) => {
     try {
-      const res = await axios.delete(`http://localhost:8000/api/delete-jobs/${jobId}`);
+      const res = await axios.delete(`https://jobera.onrender.com/api/delete-jobs/${jobId}`);
       setLoading(true)
 
       if (res.status === 200) {

@@ -71,7 +71,7 @@ const GeeksDash_prem = (props: Props) => {
 
     const fetchApplications = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/get-application?username=${currentUser?.username}`);
+        const res = await axios.get(`https://jobera.onrender.com/api/get-application?username=${currentUser?.username}`);
         if (res.status === 200) {
           const applications: Application[] = res.data;
           setTotalApplications(applications.length);

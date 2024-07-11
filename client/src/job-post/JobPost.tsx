@@ -98,7 +98,7 @@ const EditJob: React.FC = () => {
       dispatch(updateStart());
       setLoading(true);
 
-      const res = await fetch(`http://localhost:8000/api/edit-profile/${currentUser?.username}`, {
+      const res = await fetch(`https://jobera.onrender.com/api/edit-profile/${currentUser?.username}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

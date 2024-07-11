@@ -26,7 +26,7 @@ const Recommended: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get<User[]>('http://localhost:8000/api/get-premium?is_premium=true');
+        const res = await axios.get<User[]>('https://jobera.onrender.com/api/get-premium?is_premium=true');
         if (res.status === 200) {
           setUsers(res.data);
         } else {
