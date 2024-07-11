@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import axios from 'axios';
 import { Oval } from 'react-loader-spinner';
 import toast from 'react-hot-toast';
 import MaxWidthWrapper from '../components/MaxWidthWrapper';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 interface Job {
