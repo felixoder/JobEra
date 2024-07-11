@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  go-app:
+    container_name: go-app
+    image: debayan/go-app:1.0.1
+    build: .
+    environment:
+      - DATABASE_URL=postgresql://jobera_owner:X7Va3AZIOjiM@ep-odd-river-a5mnv8md.us-east-2.aws.neon.tech/jobera?sslmode=require
+      - STRIPE_SECRET_KEY=sk_test_51PRK9Z2Mr9crS3hzoaLg9PyZ63m1BsTEwDiMzK77elguXoSR3Yk90qvNJSeJv87fgRlMJrkzK9I9kv2LbMI2MjwW00jxCGdQFK
+    ports:
+      - "8000:8000"
+    depends_on:
+      - go_db
+    env_file:
+      - .env  # Specify the correct path to your .env file
+
+  go_db:
+    container_name: go_db
+    image: postgres:12
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:  
+  pgdata: {}
