@@ -7,6 +7,7 @@ import MaxWidthWrapper from '../components/MaxWidthWrapper';
 import { RootState } from '../redux/store';
 import { GetCountries, GetState, GetCity } from 'react-country-state-city';
 import { useNavigate } from 'react-router-dom';
+import { Oval } from 'react-loader-spinner';
 
 interface FormData {
   fullname: string;
@@ -245,7 +246,7 @@ const EditJob: React.FC = () => {
                   type="submit"
                 >
                   {loading ? (
-                    <Oval className="h-5 w-5 inline-block text-white" />
+                          <Oval color="#fff" height={24} width={24} />
                   ) : (
                     'Update Profile'
                   )}

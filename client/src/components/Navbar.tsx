@@ -28,7 +28,7 @@ const Navbar = () => {
 
   const handleSignOut = async () => {
     try {
-      const res = await fetch('https://jobera.onrender.comapi/sign-out', {
+      const res = await fetch('https://jobera.onrender.com/api/sign-out', {
         method: 'POST',
       });
 
