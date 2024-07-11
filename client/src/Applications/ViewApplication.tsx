@@ -155,7 +155,7 @@ const ViewApplication: React.FC = () => {
                         Provide Feedback
                       </button>
                     )}
-                    <UpdateStatus applicationId={app.id} currentStatus={app.status} onUpdate={fetchApplications} />
+                    <UpdateStatus applicationId={app.id} currentStatus={app.status} onUpdate={fetchApplications} author={''} username={''} />
                   </td>
                 </tr>
               ))}
@@ -165,15 +165,7 @@ const ViewApplication: React.FC = () => {
       )}
 
       {/* Render FeedbackModal if selectedApplicationId is not null */}
-      {selectedApplicationId !== null && (
-        <FeedbackModal
-          applicationId={selectedApplicationId}
-          author={applications.find(app => app.id === selectedApplicationId)?.author || ''}
-          username={applications.find(app => app.id === selectedApplicationId)?.username || ''}
-          onClose={handleCloseFeedbackModal}
-          onFeedbackSubmit={handleFeedbackSubmit}
-        />
-      )}
+      
     </div>
   );
 };
