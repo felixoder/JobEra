@@ -71,7 +71,7 @@ const Navbar = () => {
                 
               </>
             )}
-            {currentUser && currentUser?.is_recruiter && (
+            {currentUser?.is_recruiter && (
               <>
                
               <Link to="/post-job">
@@ -87,14 +87,27 @@ const Navbar = () => {
               </>
             )}
             {
-                currentUser && currentUser?.is_premium && (
+                currentUser && currentUser?.is_recruiter && currentUser?.is_premium && (
+                  <>
 
                   <Link to="/premium-dash-recruiter">
                   <div className="flex z-40 font-semibold flex-col justify-center items-center bg-orange-500 rounded-md text-white px-2 py-2">
                    Premium Dash
                   </div>
                 </Link>
+                 
+               </>
 
+                )
+              }
+              {
+                currentUser && !currentUser?.is_recruiter && currentUser?.is_premium && 
+                (
+                  <Link to="/premium-dash-geeks">
+                  <div className="flex z-40 font-semibold flex-col justify-center items-center bg-orange-500 rounded-md text-white px-2 py-2">
+                   Premium Dash
+                  </div>
+                </Link>
                 )
               }
           
