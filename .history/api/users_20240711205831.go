@@ -569,8 +569,8 @@ func BuyPremium(w http.ResponseWriter, r *http.Request) {
 			},
 		},
 		Mode:       stripe.String(string(stripe.CheckoutSessionModePayment)),
-		SuccessURL: stripe.String("https://job-era.onrender.com/confirm"), // Redirect to success URL after payment
-		CancelURL:  stripe.String("https://job-era.onrender.com/cancel"),  // Redirect to cancel URL if payment fails
+		SuccessURL: stripe.String("http://localhost:5173/confirm"), // Redirect to success URL after payment
+		CancelURL:  stripe.String("http://localhost:3000/cancel"),  // Redirect to cancel URL if payment fails
 	}
 
 	session, err := session.New(stripeParams)
