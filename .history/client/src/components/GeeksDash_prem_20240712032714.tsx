@@ -54,7 +54,7 @@ const GeeksDash_prem = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await axios.get(`https://jobera.onrender.com/api/get-jobs`);
+        const res = await axios.get(`http://localhost:8000/api/get-jobs`);
         if (res.status === 200) {
           const sortedJobs = res.data.sort((a: Job, b: Job) => moment(b.created_at).diff(moment(a.created_at)));
           setJobs(sortedJobs);
