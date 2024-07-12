@@ -85,7 +85,6 @@ const Selected_Geeks: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto mt-8">
       <h1 className="text-2xl font-bold mb-4 text-center">Selected Applications</h1>
-      <p className='text-center text-green font-sm'>You will be contacted soon for further proceedings</p>
       {isLoading ? (
         <div className="flex justify-center items-center">
           <Oval color="#000" height={50} width={50} />
