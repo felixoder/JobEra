@@ -56,7 +56,7 @@ const Userprofile = () => {
 
   const handleBuyPremium = async () => {
     try {
-      const sessionIdRes = await axios.post('/api/buy-premium', { username });
+      const sessionIdRes = await axios.post('https://jobera.onrender.com/api/buy-premium', { username });
       const sessionId = sessionIdRes.data.sessionId;
   
       const stripe = await stripePromise;

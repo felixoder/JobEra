@@ -73,7 +73,7 @@ const Selected_Geeks: React.FC = () => {
     return  <div className="flex justify-center items-center mx-auto px-10 mt-20 flex-col gap-4">
         <h1 className='text-center font-semibold'>You dont have any applications</h1>
    
-        <Oval color="#000" height={50} width={50} />
+
     <Link to='/all-jobs'>
     <button type="submit"  className="bg-blue-500 hover:bg-blue-600 text-white  rounded h-10 w-32">
             Apply for Jobs
@@ -84,40 +84,42 @@ const Selected_Geeks: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto mt-8">
-      <h1 className="text-2xl font-bold mb-4">Applications</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">Selected Applications</h1>
       {isLoading ? (
         <div className="flex justify-center items-center">
           <Oval color="#000" height={50} width={50} />
         </div>
       ) : (
-        <table className="min-w-full bg-white border-gray-200 border rounded-lg overflow-hidden">
-          <thead className="bg-gray-50 border-b">
-            <tr>
-              <th className="py-3 px-6 text-left">Application</th>
-              <th className="py-3 px-6 text-left">Author</th>
-              <th className="py-3 px-6 text-left">Created At</th>
-              <th className="py-3 px-6 text-left">Status</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-200">
-            {applications.map((app) => (
-              <tr key={app.id}>
-                <td className="py-4 px-6">
-                  <Link to={`/jobs/${app.application}`} className="font-bold text-green-600 hover:underline">
-                    {app.application}
-                  </Link>
-                </td>
-                <td className="py-4 px-6">
-                  <Link to={`/profile/${app.author}`} className="hover:underline">
-                    {app.author}
-                  </Link>
-                </td>
-                <td className="py-4 px-6">{timeSince(app.created_at)}</td>
-                <td className={`py-4 px-6 text-${getStatusColor(app.status)}-500`}>{app.status}</td>
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white border border-gray-200 rounded-lg">
+            <thead className="bg-gray-50 border-b">
+              <tr>
+                <th className="py-3 px-6 text-left">Application</th>
+                <th className="py-3 px-6 text-left">Author</th>
+                <th className="py-3 px-6 text-left">Created At</th>
+                <th className="py-3 px-6 text-left">Status</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              {applications.map((app) => (
+                <tr key={app.id}>
+                  <td className="py-4 px-6">
+                    <Link to={`/jobs/${app.application}`} className="font-bold text-green-600 hover:underline">
+                      {app.application}
+                    </Link>
+                  </td>
+                  <td className="py-4 px-6">
+                    <Link to={`/profile/${app.author}`} className="hover:underline">
+                      {app.author}
+                    </Link>
+                  </td>
+                  <td className="py-4 px-6">{timeSince(app.created_at)}</td>
+                  <td className={`py-4 px-6 ${getStatusColor(app.status)}`}>{app.status}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

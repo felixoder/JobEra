@@ -27,7 +27,7 @@ const FilterBar: React.FC<Props> = ({ onFilter }) => {
   };
 
   return (
-    <form onSubmit={handleFilterSubmit} className="flex items-center mt-4">
+    <form onSubmit={handleFilterSubmit} className="flex flex-col gap-2 items-center mt-4 justify-center md:flex-row">
       <input
         type="text"
         name="title"

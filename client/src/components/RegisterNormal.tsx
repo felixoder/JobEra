@@ -2,8 +2,6 @@ import React, { useState, useEffect, ChangeEvent } from 'react';
 import { GetCountries, GetState, GetCity } from 'react-country-state-city';
 import Select from 'react-select';
 import MaxWidthWrapper from './MaxWidthWrapper';
-import { useDispatch } from 'react-redux';
-import { signInFailure, signInStart, signInSuccess } from '../redux/user/userSlice';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { Oval } from 'react-loader-spinner'; // Loader component from react-loader-spinner
@@ -24,7 +22,6 @@ const RegisterNormal: React.FC = () => {
   const [countriesList, setCountriesList] = useState<any[]>([]);
   const [stateList, setStateList] = useState<any[]>([]);
   const [cityList, setCityList] = useState<any[]>([]);
-  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false); // Loading state
 
   useEffect(() => {
@@ -62,11 +59,10 @@ const RegisterNormal: React.FC = () => {
 
     if (!formData.email || !formData.fullname || !formData.address || !formData.password) {
       toast.error('Please fill all the fields');
-      return dispatch(signInFailure('Please fill all the fields'));
+      return;
     }
 
     try {
-      dispatch(signInStart());
       setLoading(true); // Set loading state to true
       const res = await fetch('https://jobera.onrender.com/api/register-normal', {
         method: 'POST',
@@ -79,16 +75,14 @@ const RegisterNormal: React.FC = () => {
 
       if (!res.ok || !data.user_id) {
         toast.error('Something went wrong. Try again!');
-        return dispatch(signInFailure(data.message || 'Registration failed'));
+        return;
       }
 
-      dispatch(signInSuccess(data));
       toast.success('You are registered successfully!');
       navigate('/log-in');
     } catch (error) {
       console.error('Error:', error);  // Debugging line to see the error
       toast.error('Sorry, try again later!');
-      dispatch(signInFailure('Failed'));
     } finally {
       setLoading(false); // Set loading state to false
     }

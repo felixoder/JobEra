@@ -14,6 +14,7 @@ interface User {
   username: string;
   is_recruiter: boolean;
   profile_image: string;
+  is_premium:boolean
 }
 
 const Navbar = () => {
@@ -70,7 +71,7 @@ const Navbar = () => {
                 
               </>
             )}
-            {currentUser?.is_recruiter && (
+            {currentUser && currentUser?.is_recruiter && (
               <>
                
               <Link to="/post-job">
@@ -78,30 +79,25 @@ const Navbar = () => {
                   Post-Job
                 </div>
               </Link>
+              
              
-              <Link to="/premium-dash-recruiter">
-                <div className="flex z-40 font-semibold flex-col justify-center items-center bg-orange-500 rounded-md text-white px-2 py-2">
-                 Premium Dash
-                </div>
-              </Link>
+             
               
             
               </>
             )}
-            {currentUser && !currentUser?.is_recruiter && (
-              <>
-               
-              
-             
-              <Link to="/premium-dash-geeks">
-                <div className="flex z-40 font-semibold flex-col justify-center items-center bg-orange-500 rounded-md text-white px-2 py-2">
-                 Premium Dash
-                </div>
-              </Link>
-              
-            
-              </>
-            )}
+            {
+                currentUser && currentUser?.is_premium && (
+
+                  <Link to="/premium-dash-recruiter">
+                  <div className="flex z-40 font-semibold flex-col justify-center items-center bg-orange-500 rounded-md text-white px-2 py-2">
+                   Premium Dash
+                  </div>
+                </Link>
+
+                )
+              }
+          
          
             <div className="h-8 w-px bg-zinc-200 hidden md:block" />
             <div className="relative">
@@ -120,7 +116,7 @@ const Navbar = () => {
                   >
                     Profile
                   </Link>
-                  {currentUser.is_recruiter && (
+                  {currentUser && currentUser.is_recruiter && (
                     <>
                     <Link to="/jobs">
                 <div className="flex z-40 font-semibold flex-col justify-center items-center">
@@ -147,7 +143,7 @@ const Navbar = () => {
                  
                     </>
                   )}
-                  {!currentUser.is_recruiter && (
+                  {currentUser && !currentUser.is_recruiter && (
                     <>
                       <Link to="/All-jobs" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
                         All Jobs
@@ -161,11 +157,17 @@ const Navbar = () => {
                       <Link to="/rejected-application" className="block px-4 py-2 text-red-600 hover:bg-gray-100">
                         Rejected Applications
                       </Link>
-                      <Link to="/quiz">
-                <div className="flex z-40 font-semibold flex-col justify-center items-center bg-orange-500 rounded-md text-white px-2 py-2">
-                  Practise Quiz
-                </div>
-              </Link>
+
+                      {
+                        currentUser && !currentUser.is_recruiter && currentUser.is_premium && (
+                          <Link to="/quiz">
+                          <div className="flex z-40 font-semibold flex-col justify-center items-center bg-orange-500 rounded-md text-white px-2 py-2">
+                            Practise Quiz
+                          </div>
+                        </Link>
+                        )
+                      }
+                     
                      
                     </>
                   )}

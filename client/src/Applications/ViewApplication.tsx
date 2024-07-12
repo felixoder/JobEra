@@ -96,7 +96,7 @@ const ViewApplication: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto mt-8 px-4 sm:px-6 lg:px-8">
-      <h1 className="text-2xl font-bold mb-4">Applications</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center"> Pending Applications</h1>
       {isLoading ? (
         <div className="flex justify-center items-center">
           <Oval color="#000" height={50} width={50} />
